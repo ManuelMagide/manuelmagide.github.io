@@ -76,4 +76,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Instant glide/slide hover reaction for buttons & interactive elements
+    const interactiveSelector = '.menu-item, .action-btn, .project-link-btn, .comp-badge, .list-item, .social-link, .theme-toggle, .cutout-box';
+    let currentHovered = null;
+
+    function setHoverActive(element) {
+        if (currentHovered === element) return;
+        if (currentHovered) {
+            currentHovered.classList.remove('hover-active');
+        }
+        currentHovered = element;
+        if (currentHovered) {
+            currentHovered.classList.add('hover-active');
+        }
+    }
+
+    // Pointer and Mouse glide tracking (no press required)
+    document.addEventListener('pointermove', (e) => {
+        const target = e.target ? e.target.closest(interactiveSelector) : null;
+        setHoverActive(target);
+    }, { passive: true });
+
+    document.addEventListener('mousemove', (e) => {
+        const target = e.target ? e.target.closest(interactiveSelector) : null;
+        setHoverActive(target);
+    }, { passive: true });
+
+    // Touch sliding drag tracking for mobile/tablets
+    document.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) {
+            const touch = e.touches[0];
+            const el = document.elementFromPoint(touch.clientX, touch.clientY);
+            const target = el ? el.closest(interactiveSelector) : null;
+            setHoverActive(target);
+        }
+    }, { passive: true });
+
+    document.addEventListener('pointerleave', () => setHoverActive(null));
+    document.addEventListener('touchend', () => {
+        setTimeout(() => setHoverActive(null), 300);
+    });
 });

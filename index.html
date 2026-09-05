@@ -11,12 +11,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
     <div class="water-background">
+        <div class="halftone-pattern"></div>
+        <div class="p5-bg-slash s1"></div>
+        <div class="p5-bg-slash s2"></div>
         <div class="bubble b1"></div>
         <div class="bubble b2"></div>
         <div class="bubble b3"></div>
@@ -70,21 +73,22 @@
                 <!-- About Me Section -->
                 <section id="about" class="content-section active-section">
                     <div class="angled-header">
-                        <h2>SOBRE MÍ</h2>
+                        <h2 class="p5-cutout-title">
+                            <span class="cutout-box black">SOBRE</span>
+                            <span class="cutout-box red">MÍ</span>
+                        </h2>
                     </div>
                     <div class="info-blocks">
                         <div class="info-block personal-info">
                             <span class="block-label">INFORMACIÓN PERSONAL:</span>
-                            <div class="personal-grid" style="display: flex; flex-direction: column; gap: 10px;">
-                                <div style="display: flex; gap: 20px;">
-                                    <div class="personal-item" style="flex: 1;"><strong>Nombre:</strong> Manuel Magide
-                                        Depierre</div>
-                                    <div class="personal-item" style="flex: 1;"><strong>Edad:</strong> 21 años</div>
+                            <div class="personal-grid">
+                                <div class="personal-row">
+                                    <div class="personal-item"><strong>Nombre:</strong> Manuel Magide Depierre</div>
+                                    <div class="personal-item"><strong>Edad:</strong> 21 años</div>
                                 </div>
-                                <div style="display: flex; gap: 20px;">
-                                    <div class="personal-item" style="flex: 1;"><strong>Email:</strong>
-                                        manumagideok@gmail.com</div>
-                                    <div class="personal-item" style="flex: 1;"><strong>DNI:</strong> 45285387</div>
+                                <div class="personal-row">
+                                    <div class="personal-item"><strong>Email:</strong> manumagideok@gmail.com</div>
+                                    <div class="personal-item"><strong>DNI:</strong> 45285387</div>
                                 </div>
                             </div>
                         </div>
@@ -103,52 +107,95 @@
 
                 <!-- Projects Section -->
                 <section id="projects" class="content-section">
+                    <div class="angled-header">
+                        <h2 class="p5-cutout-title">
+                            <span class="cutout-box red">MIS</span>
+                            <span class="cutout-box black">PROYECTOS</span>
+                        </h2>
+                    </div>
                     <div class="list-layout">
-                        <div class="list-title">LISTA</div>
-                        <div class="list-item">
-                            <div class="list-number">01</div>
-                            <div class="list-content">
-                                <h3><a href="https://github.com/ManuelMagide/fantasmin" target="_blank">FANTASMIN 👻</a>
-                                </h3>
-                                <span>PROYECTO DESTACADO</span>
+                        <div class="list-title">PROYECTOS DESTACADOS</div>
+
+                        <!-- Project 01 -->
+                        <div class="list-item project-card">
+                            <div class="project-preview">
+                                <div class="preview-icon">👻</div>
+                                <div class="preview-badge">GAME DEV</div>
                             </div>
+                            <div class="list-content">
+                                <h3><a href="https://github.com/ManuelMagide/fantasmin" target="_blank">FANTASMIN 👻</a></h3>
+                                <p class="project-desc">Juego arcade interactivo desarrollado en Python, enfocado en mecánicas de movimiento dinámicas y lógica retro.</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">PYTHON</span>
+                                    <span class="tech-tag">PYGAME</span>
+                                    <span class="tech-tag">LOGIC</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/ManuelMagide/fantasmin" target="_blank" class="project-link-btn">VER GITHUB ↗</a>
                         </div>
-                        <div class="list-item">
-                            <div class="list-number">02</div>
-                            <div class="list-content">
-                                <h3><a href="https://github.com/ManuelMagide/juego_match-3" target="_blank">JUEGO
-                                        MATCH-3 🎮</a></h3>
-                                <span>PROYECTO DESTACADO</span>
+
+                        <!-- Project 02 -->
+                        <div class="list-item project-card">
+                            <div class="project-preview">
+                                <div class="preview-icon">🎮</div>
+                                <div class="preview-badge">PUZZLE</div>
                             </div>
+                            <div class="list-content">
+                                <h3><a href="https://github.com/ManuelMagide/juego_match-3" target="_blank">JUEGO MATCH-3 🎮</a></h3>
+                                <p class="project-desc">Videojuego de puzzle tipo Match-3 con algoritmos de combinación de matrices, sistema de combos y tablero gráfico.</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">PYTHON</span>
+                                    <span class="tech-tag">ALGORITHMS</span>
+                                    <span class="tech-tag">GUI</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/ManuelMagide/juego_match-3" target="_blank" class="project-link-btn">VER GITHUB ↗</a>
                         </div>
                     </div>
                 </section>
 
                 <!-- Skills Section -->
                 <section id="skills" class="content-section">
+                    <div class="angled-header">
+                        <h2 class="p5-cutout-title">
+                            <span class="cutout-box black">HABILIDADES</span>
+                        </h2>
+                    </div>
                     <div class="stats-screen">
                         <div class="stat-group">
                             <h3 class="group-title">INFORMÁTICA Y TECNOLOGÍAS</h3>
                             <div class="stat-row">
-                                <span class="stat-name">PYTHON (INTERMEDIO)</span>
+                                <div class="stat-header">
+                                    <span class="stat-name">PYTHON</span>
+                                    <span class="stat-level">LV. 70 (INTERMEDIO)</span>
+                                </div>
                                 <div class="stat-bar">
                                     <div class="fill python" style="width: 70%;"></div>
                                 </div>
                             </div>
                             <div class="stat-row">
-                                <span class="stat-name">JAVASCRIPT (BÁSICO)</span>
+                                <div class="stat-header">
+                                    <span class="stat-name">JAVASCRIPT</span>
+                                    <span class="stat-level">LV. 40 (BÁSICO)</span>
+                                </div>
                                 <div class="stat-bar">
                                     <div class="fill js" style="width: 40%;"></div>
                                 </div>
                             </div>
                             <div class="stat-row">
-                                <span class="stat-name">HTML / CSS (BÁSICO)</span>
+                                <div class="stat-header">
+                                    <span class="stat-name">HTML / CSS</span>
+                                    <span class="stat-level">LV. 45 (BÁSICO)</span>
+                                </div>
                                 <div class="stat-bar">
-                                    <div class="fill html" style="width: 40%;"></div>
+                                    <div class="fill html" style="width: 45%;"></div>
                                 </div>
                             </div>
                             <div class="stat-row">
-                                <span class="stat-name">RPA / JAVA (BÁSICO)</span>
+                                <div class="stat-header">
+                                    <span class="stat-name">RPA / JAVA</span>
+                                    <span class="stat-level">LV. 40 (BÁSICO)</span>
+                                </div>
                                 <div class="stat-bar">
                                     <div class="fill rpa" style="width: 40%;"></div>
                                 </div>
@@ -170,6 +217,12 @@
 
                 <!-- CV Section -->
                 <section id="cv" class="content-section">
+                    <div class="angled-header">
+                        <h2 class="p5-cutout-title">
+                            <span class="cutout-box black">EXPERIENCIA</span>
+                            <span class="cutout-box red">ACADÉMICA Y LABORAL</span>
+                        </h2>
+                    </div>
                     <div class="cv-container">
                         <!-- Education -->
                         <div class="list-layout">
@@ -223,7 +276,9 @@
                 <!-- Contact Section -->
                 <section id="contact" class="content-section">
                     <div class="angled-box">
-                        <h2>¡HABLEMOS!</h2>
+                        <h2 class="p5-cutout-title">
+                            <span class="cutout-box red">¡HABLEMOS!</span>
+                        </h2>
                         <div class="contact-details">
                             <a href="mailto:manumagideok@gmail.com" class="action-btn email-btn">EMAIL</a>
                             <a href="https://wa.me/5491153842029" target="_blank"
