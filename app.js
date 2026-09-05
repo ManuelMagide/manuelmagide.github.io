@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mainMenu = document.getElementById('main-menu');
 
+    const closeMobileMenu = () => {
+        hamburgerBtn.classList.remove('active');
+        mainMenu.classList.remove('open');
+    };
+
     // Hamburger menu toggle
     hamburgerBtn.addEventListener('click', () => {
         hamburgerBtn.classList.toggle('active');
@@ -13,30 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            // Prevent default anchor behavior
             e.preventDefault();
 
-            // Don't re-trigger if already active
             if (item.classList.contains('active')) {
-                // Still close mobile menu if open
-                hamburgerBtn.classList.remove('active');
-                mainMenu.classList.remove('open');
+                closeMobileMenu();
                 return;
             }
 
             const targetId = item.getAttribute('data-target');
-
-            // Close mobile menu
-            hamburgerBtn.classList.remove('active');
-            mainMenu.classList.remove('open');
+            closeMobileMenu();
 
             // Trigger Transition Effect
             triggerTransition(() => {
-                // Remove active class from all menu items and sections
                 menuItems.forEach(mi => mi.classList.remove('active'));
                 sections.forEach(sec => sec.classList.remove('active-section'));
 
-                // Add active class to clicked item and corresponding section
                 item.classList.add('active');
                 document.getElementById(targetId).classList.add('active-section');
             });
@@ -46,16 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function triggerTransition(callback) {
         overlay.classList.add('active');
 
-        // Wait for the flash effect to peak before changing content
         setTimeout(() => {
             callback();
-
-            // Remove flash effect after it finishes
             setTimeout(() => {
                 overlay.classList.remove('active');
-            }, 250); // Second half of the 0.5s animation
-
-        }, 250); // First half of the 0.5s animation
+            }, 250);
+        }, 250);
     }
 
     // Theme Toggle Logic
@@ -64,16 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sunIcon = document.querySelector('.sun-icon');
 
     themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-
-        // Switch icons
-        if (document.body.classList.contains('dark-theme')) {
-            moonIcon.style.display = 'none';
-            sunIcon.style.display = 'inline';
-        } else {
-            moonIcon.style.display = 'inline';
-            sunIcon.style.display = 'none';
-        }
+        const isDark = document.body.classList.toggle('dark-theme');
+        moonIcon.style.display = isDark ? 'none' : 'inline';
+        sunIcon.style.display = isDark ? 'inline' : 'none';
     });
 
     // Instant glide/slide hover reaction for buttons & interactive elements
@@ -91,27 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Pointer and Mouse glide tracking (no press required)
-    document.addEventListener('pointermove', (e) => {
-        const target = e.target ? e.target.closest(interactiveSelector) : null;
-        setHoverActive(target);
-    }, { passive: true });
-
-    document.addEventListener('mousemove', (e) => {
-        const target = e.target ? e.target.closest(interactiveSelector) : null;
-        setHoverActive(target);
-    }, { passive: true });
-
-    // Touch sliding drag tracking for mobile/tablets
-    document.addEventListener('touchmove', (e) => {
+    // Pointer and Touch glide tracking
+    const handleMove = (e) => {
+        let el = e.target;
         if (e.touches && e.touches.length > 0) {
             const touch = e.touches[0];
-            const el = document.elementFromPoint(touch.clientX, touch.clientY);
-            const target = el ? el.closest(interactiveSelector) : null;
-            setHoverActive(target);
+            el = document.elementFromPoint(touch.clientX, touch.clientY);
         }
-    }, { passive: true });
+        const target = el ? el.closest(interactiveSelector) : null;
+        setHoverActive(target);
+    };
 
+    document.addEventListener('pointermove', handleMove, { passive: true });
+    document.addEventListener('touchmove', handleMove, { passive: true });
     document.addEventListener('pointerleave', () => setHoverActive(null));
     document.addEventListener('touchend', () => {
         setTimeout(() => setHoverActive(null), 300);
